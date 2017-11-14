@@ -26,4 +26,4 @@ access_token=your_twitter_app_access_token
 access_token_secret=your_twitter_app_access_token_secret
 ```
 
-You can create a Twitter app for your own bot at (https://apps.twitter.com/app/new)
+You can create a Twitter app for your own bot at https://apps.twitter.com/app/new
