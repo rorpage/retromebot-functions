@@ -1,0 +1,11 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  tweetpic:
+    lang: python
+    handler: ./tweetpic
+    image: tweetpic
+    environment_file:
+      - env.list

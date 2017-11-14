@@ -1,0 +1,3 @@
+azure-storage-blob
+python-twitter
+Pillow

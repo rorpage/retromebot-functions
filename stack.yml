@@ -1,0 +1,21 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  imagemagick_bw:
+    lang: Dockerfile
+    handler: ./imagemagick_bw
+    image: imagemagick_bw
+  retroization:
+    lang: python
+    handler: ./retroization
+    image: retroization
+    environment_file:
+      - env.list
+  tweetpic:
+    lang: python
+    handler: ./tweetpic
+    image: tweetpic
+    environment_file:
+      - env.list

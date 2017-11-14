@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  imagemagick_bw:
+    lang: Dockerfile
+    handler: ./imagemagick_bw
+    image: imagemagick_bw

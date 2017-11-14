@@ -1,0 +1,11 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  retroization:
+    lang: python
+    handler: ./retroization
+    image: retroization
+    environment_file:
+      - env.list
