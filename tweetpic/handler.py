@@ -16,7 +16,15 @@ api = twitter.Api(
 )
 
 def handle(json_in):
-    filename = json.loads(json_in)[0]['subject']
+    loaded_json = json.loads(json_in)[0]
+
+    if loaded_json['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent':
+        validation_code = loaded_json['data']['validationCode']
+        response = {'validationResponse': validation_code}
+        print json.dumps(response)
+        return
+
+    filename = loaded_json['subject']
     filename = filename.replace('/blobServices/default/containers/', '')
     container, garbage, blob_name = filename.split('/')
 
