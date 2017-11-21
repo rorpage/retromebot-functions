@@ -12,7 +12,8 @@ def handle(json_in):
     if loaded_json['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent':
         validation_code = loaded_json['data']['validationCode']
         response = {'validationResponse': validation_code}
-        return json.dumps(response)
+        print json.dumps(response)
+        return
 
     filename = loaded_json['subject']
     filename = filename.replace('/blobServices/default/containers/', '')
