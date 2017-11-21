@@ -7,16 +7,13 @@ azure_blob_account_key = os.environ['azure_blob_account_key']
 block_blob_service = BlockBlobService(account_name=azure_blob_account, account_key=azure_blob_account_key)
 
 def handle(json_in):
-    loaded_json = json.loads(json_in)
-    first_json_item = loaded_json[0]
+    loaded_json = json.loads(json_in)[0]
 
-    if first_json_item['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent':
-        validation_code = first_json_item['data']['validationCode']
-        validation_response = '{"validationResponse":"{code}"}'.format(code=validation_code)
-        print json.loads(validation_response)
-        return
+    if loaded_json['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent':
+        validation_code = loaded_json['data']['validationCode']
+        return json.dumps('{"validationResponse":"{code}"}'.format(code=validation_code))
 
-    filename = first_json_item['subject']
+    filename = loaded_json['subject']
     filename = filename.replace('/blobServices/default/containers/', '')
     container, garbage, blob_name = filename.split('/')
 
