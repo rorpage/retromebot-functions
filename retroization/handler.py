@@ -9,7 +9,7 @@ block_blob_service = BlockBlobService(account_name=azure_blob_account, account_k
 def handle(json_in):
     loaded_json = json.loads(json_in)[0]
 
-    if loaded_json['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent'
+    if loaded_json['eventType'] == 'Microsoft.EventGrid.SubscriptionValidationEvent':
         validation_code = loaded_json['data']['validationCode']
         validation_response = '{"validationResponse":"{code}"}'.format(code=validation_code)
         print json.loads(validation_response)
